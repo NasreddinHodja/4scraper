@@ -7,10 +7,17 @@ Usage:
 import sys
 import os
 
+from multiprocessing import Pool
 import requests
-from tqdm import tqdm
 
 from bs4 import BeautifulSoup;
+
+def download_img(img_url):
+    file_name = img_url.split('/')[-1]
+
+    with open('out/'+file_name, 'wb') as f:
+        response = requests.get(img_url)
+        f.write(response.content)
 
 def scrape_thread(url):
     response = requests.get(url)
@@ -22,12 +29,11 @@ def scrape_thread(url):
     if 'out' not in os.listdir():
         os.mkdir('out')
 
-    for img in tqdm(imgs):
-        img_url = 'https:' + img['href']
-        file_name = img_url.split('/')[-1]
+    img_urls = []
+    for img in imgs:
+        img_urls += ['https:' + img['href']]
 
-        with open('out/'+file_name, 'wb') as f:
-            response = requests.get(img_url)
-            f.write(response.content)
+    with Pool(10) as p:
+        p.map(download_img, img_urls)
 
 scrape_thread(sys.argv[1])
