@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 """ Scrapes 4chan thread.
 Usage:
     $ ./scraper.py [thread_url]
 """
-#!/usr/bin/env python3
+
 import sys
 
 import requests
