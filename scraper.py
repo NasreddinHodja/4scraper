@@ -11,6 +11,7 @@ from multiprocessing import Pool
 import requests
 
 from bs4 import BeautifulSoup;
+from tqdm import tqdm
 
 def download_img(img_url):
     file_name = img_url.split('/')[-1]
@@ -34,6 +35,8 @@ def scrape_thread(url):
         img_urls += ['https:' + img['href']]
 
     with Pool(10) as p:
-        p.map(download_img, img_urls)
+        for _ in tqdm(p.imap_unordered(download_img, img_urls),
+                      total=len(img_urls)):
+            pass
 
 scrape_thread(sys.argv[1])
