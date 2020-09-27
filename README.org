@@ -1,0 +1,9 @@
+#+title: README
+#+OPTIONS: ^:nil
+# #+OPTIONS: *:nil
+#+OPTIONS: \n:t
+#+SETUPFILE: conf/setup/theme-readtheorg.setup
+
+
+* Usage
+  : $ ./scraper.py [thread_url]
