@@ -5,6 +5,7 @@ Usage:
 """
 
 import sys
+import os
 
 import requests
 from tqdm import tqdm
@@ -17,6 +18,9 @@ def scrape_thread(url):
 
     thread = soup.find('div', {'class': 'thread'})
     imgs = thread.findAll('a', href=True, target='_blank')
+
+    if 'out' not in os.listdir():
+        os.mkdir('out')
 
     for img in tqdm(imgs):
         img_url = 'https:' + img['href']
