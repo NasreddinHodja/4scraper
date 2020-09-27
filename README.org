@@ -1,9 +1,13 @@
-#+title: README
+#+title: 4chan thread scrapper
 #+OPTIONS: ^:nil
 # #+OPTIONS: *:nil
 #+OPTIONS: \n:t
-#+SETUPFILE: conf/setup/theme-readtheorg.setup
+#+SETUPFILE: ~/org/conf/setup/theme-readtheorg.setup
 
+* Install
+  : $ pip install bs4
+  : $ git clone https://github.com/NasreddinHodja/4scraper.git 
+  : $ chmod +x ./scraper.py
 
 * Usage
   : $ ./scraper.py [thread_url]
