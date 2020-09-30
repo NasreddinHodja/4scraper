@@ -12,6 +12,7 @@ import requests
 
 from bs4 import BeautifulSoup;
 from tqdm import tqdm
+from termcolor import cprint
 
 def download_img(img_url):
     file_name = img_url.split('/')[-1]
@@ -34,6 +35,7 @@ def scrape_thread(url):
     for img in imgs:
         img_urls += ['https:' + img['href']]
 
+    cprint(' * Downloading...', 'blue', attrs=['bold'])
     with Pool(10) as p:
         for _ in tqdm(p.imap_unordered(download_img, img_urls),
                       total=len(img_urls)):
