@@ -39,4 +39,8 @@ def scrape_thread(url):
                       total=len(img_urls)):
             pass
 
-scrape_thread(sys.argv[1])
+def main():
+    scrape_thread(sys.argv[1])
+
+if __name__ == '__main__':
+    main()
