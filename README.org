@@ -7,6 +7,7 @@
 * Install
   : $ pip install bs4
   : $ git clone https://github.com/NasreddinHodja/4scraper.git 
+  : $ cd 4scrapper
   : $ chmod +x ./scraper.py
 
 * Usage
