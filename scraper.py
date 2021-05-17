@@ -18,8 +18,11 @@ def download_img(img_url):
     file_name = img_url.split('/')[-1]
 
     with open('out/'+file_name, 'wb') as f:
-        response = requests.get(img_url)
-        f.write(response.content)
+        try:
+            response = requests.get(img_url)
+            f.write(response.content)
+        except:
+            pass
 
 def scrape_thread(url):
     response = requests.get(url)
